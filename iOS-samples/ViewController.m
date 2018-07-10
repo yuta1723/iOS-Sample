@@ -18,6 +18,12 @@
     NSLog(@"viewDidLoad");
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    // テキストを設定
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,20,100,30)];
+    label.text = @"Hello world";
+    
+    [self.view addSubview:label];
 }
 
 
