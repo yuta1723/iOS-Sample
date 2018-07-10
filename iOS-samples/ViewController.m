@@ -16,6 +16,7 @@
 
 int count = 0;
 UILabel *countLabel;
+UILabel *sliderCountLabel;
 
 - (void)viewDidLoad {
     NSLog(@"viewDidLoad");
@@ -44,6 +45,16 @@ UILabel *countLabel;
     countLabel.text = [NSString stringWithFormat:@"click count = %d",count];
     [self.view addSubview:countLabel];
     
+    // スライダーを設定
+    UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(0, 100, 300, 30)];
+    [slider addTarget:self action:@selector(slideAction:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:slider];
+    
+    // クリックカウント用のテキストラベル
+    sliderCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,140,150,30)];
+    sliderCountLabel.text = [NSString stringWithFormat:@"Slider count = %d",0];
+    [self.view addSubview:sliderCountLabel];
+    
 }
 
 
@@ -61,5 +72,13 @@ UILabel *countLabel;
     countLabel.text = [NSString stringWithFormat:@"click count = %d",count];
 }
 
+// スライドアクション時のセレクター
+- (void)slideAction:(UISlider *)slider {
+    NSLog(@"slideAction");
+    int labelNum = slider.value * 100;
+    
+    NSLog(@"slider value = %f",slider.value);
+    sliderCountLabel.text = [NSString stringWithFormat:@"Slider count = %d",labelNum];
+}
 
 @end
