@@ -24,6 +24,15 @@
     label.text = @"Hello world";
     
     [self.view addSubview:label];
+    
+    // ボタンを設定
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame = CGRectMake(0,60,100,30);
+    [button setTitle:@"ボタン" forState:UIControlStateNormal];
+    [button setTitle:@"ハイライト" forState:UIControlStateHighlighted];
+    [button setTitle:@"無効" forState:UIControlStateDisabled];
+    
+    [self.view addSubview:button];
 }
 
 
