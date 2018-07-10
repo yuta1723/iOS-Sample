@@ -14,6 +14,9 @@
 
 @implementation ViewController
 
+int count = 0;
+UILabel *countLabel;
+
 - (void)viewDidLoad {
     NSLog(@"viewDidLoad");
     [super viewDidLoad];
@@ -26,7 +29,15 @@
     [button setTitle:@"ハイライト" forState:UIControlStateHighlighted];
     [button setTitle:@"無効" forState:UIControlStateDisabled];
     
+    [button addTarget:self action:@selector(onButtonClicked) forControlEvents:UIControlEventTouchDown];
+    
     [self.view addSubview:button];
+    
+    // クリックカウント用のテキストラベル
+    countLabel = [[UILabel alloc] initWithFrame:CGRectMake(110,60,150,30)];
+    countLabel.text = [NSString stringWithFormat:@"click count = %d",count];
+    [self.view addSubview:countLabel];
+    
 }
 
 
@@ -34,6 +45,14 @@
     NSLog(@"didReceiveMemoryWarning");
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// ボタン押された際のセレクター
+- (void)onButtonClicked {
+    NSLog(@"onButtonClicked");
+    
+    count++;
+    countLabel.text = [NSString stringWithFormat:@"click count = %d",count];
 }
 
 
