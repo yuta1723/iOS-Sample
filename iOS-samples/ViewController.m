@@ -14,9 +14,6 @@
 
 @implementation ViewController
 
-int count = 0;
-UILabel *countLabel;
-
 - (void)viewDidLoad {
     NSLog(@"viewDidLoad");
     [super viewDidLoad];
@@ -32,12 +29,6 @@ UILabel *countLabel;
     [button addTarget:self action:@selector(onButtonClicked) forControlEvents:UIControlEventTouchDown];
     
     [self.view addSubview:button];
-    
-    // クリックカウント用のテキストラベル
-    countLabel = [[UILabel alloc] initWithFrame:CGRectMake(110,60,150,30)];
-    countLabel.text = [NSString stringWithFormat:@"click count = %d",count];
-    [self.view addSubview:countLabel];
-    
 }
 
 
@@ -50,9 +41,10 @@ UILabel *countLabel;
 // ボタン押された際のセレクター
 - (void)onButtonClicked {
     NSLog(@"onButtonClicked");
+    UIViewController *secontViewController = [[SecondViewController alloc] init];
     
-    count++;
-    countLabel.text = [NSString stringWithFormat:@"click count = %d",count];
+    [self presentViewController:secontViewController animated:YES completion:nil];
+    
 }
 
 
