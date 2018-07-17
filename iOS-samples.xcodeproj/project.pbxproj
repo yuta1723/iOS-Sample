@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA28591C20FE577E001F0FFD /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA28591B20FE577E001F0FFD /* SecondViewController.m */; };
 		EAB9940820F5597700E9035A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB9940720F5597700E9035A /* AppDelegate.m */; };
 		EAB9940B20F5597700E9035A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB9940A20F5597700E9035A /* ViewController.m */; };
 		EAB9941020F5597A00E9035A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAB9940F20F5597A00E9035A /* Assets.xcassets */; };
@@ -33,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA28591B20FE577E001F0FFD /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		EA28591D20FE5796001F0FFD /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		EAB9940320F5597700E9035A /* iOS-samples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-samples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB9940620F5597700E9035A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EAB9940720F5597700E9035A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -104,6 +107,8 @@
 				EAB9940F20F5597A00E9035A /* Assets.xcassets */,
 				EAB9941420F5597A00E9035A /* Info.plist */,
 				EAB9941520F5597A00E9035A /* main.m */,
+				EA28591B20FE577E001F0FFD /* SecondViewController.m */,
+				EA28591D20FE5796001F0FFD /* SecondViewController.h */,
 			);
 			path = "iOS-samples";
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA28591C20FE577E001F0FFD /* SecondViewController.m in Sources */,
 				EAB9940B20F5597700E9035A /* ViewController.m in Sources */,
 				EAB9941620F5597A00E9035A /* main.m in Sources */,
 				EAB9940820F5597700E9035A /* AppDelegate.m in Sources */,
