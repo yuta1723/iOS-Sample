@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     NSLog(@"viewDidLoad");
     
+    [self.view setBackgroundColor:UIColor.yellowColor];
+    
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(110,60,150,30)];
     label.text = @"Second View";
     [self.view addSubview:label];
