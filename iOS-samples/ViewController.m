@@ -43,7 +43,7 @@
     NSLog(@"onButtonClicked");
     UIViewController *secontViewController = [[SecondViewController alloc] init];
     
-    [self presentViewController:secontViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:secontViewController animated:YES];
     
 }
 
