@@ -56,6 +56,37 @@
     // UIAlertControllerStyleAlert : 画面中央に表示 (アラート)
     // UIAlertControllerStyleActionSheet 画面下に表示 (アクションシート)
     
+    // Cancel用のアクションを生成
+    UIAlertAction * cancelAction =
+    [UIAlertAction actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleCancel
+                           handler:^(UIAlertAction * action) {
+                               // ボタンタップ時の処理
+                               NSLog(@"Cancel button tapped.");
+                           }];
+    
+    // Destructive用のアクションを生成
+    UIAlertAction * destructiveAction =
+    [UIAlertAction actionWithTitle:@"Destructive"
+                             style:UIAlertActionStyleDestructive
+                           handler:^(UIAlertAction * action) {
+                               // ボタンタップ時の処理
+                               NSLog(@"Destructive button tapped.");
+                           }];
+    
+    // OK用のアクションを生成
+    UIAlertAction * okAction =
+    [UIAlertAction actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction * action) {
+                               // ボタンタップ時の処理
+                               NSLog(@"OK button tapped.");
+                           }];
+    
+    [alert addAction:cancelAction];
+    [alert addAction:destructiveAction];
+    [alert addAction:okAction];
+    
     [self presentViewController:alert animated:YES completion:^{
         NSLog(@"displayed");
     }];
