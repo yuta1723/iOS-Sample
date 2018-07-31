@@ -49,6 +49,17 @@
 // ボタン押された際のセレクター
 - (void)onButtonClicked {
     NSLog(@"onButtonClicked");
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"title"
+                                                                   message:@"message"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    // UIAlertControllerStyleAlert : 画面中央に表示 (アラート)
+    // UIAlertControllerStyleActionSheet 画面下に表示 (アクションシート)
+    
+    [self presentViewController:alert animated:YES completion:^{
+        NSLog(@"displayed");
+    }];
+    
 }
 
 @end
