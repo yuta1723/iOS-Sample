@@ -87,10 +87,28 @@
     [alert addAction:destructiveAction];
     [alert addAction:okAction];
     
+    if ([self isShowingAlertController:self]) {
+        // まだAlertControllerを表示してないので、returnしない。
+        return;
+    }
+    
     [self presentViewController:alert animated:YES completion:^{
         NSLog(@"displayed");
     }];
     
+    if ([self isShowingAlertController:self]) {
+        // もう表示しているので、returnする。
+        return;
+    }
+    [self presentViewController:alert animated:YES completion:^{
+        NSLog(@"displayed");
+    }];
+}
+
+- (BOOL)isShowingAlertController :(UIViewController *)viewController{
+    return [self.presentedViewController isKindOfClass:[UIAlertController class]];
+//    return [self.navigationController.visibleViewController isKindOfClass:[UIAlertController class]];
 }
 
 @end
+// https://stackoverflow.com/questions/28270282/what-is-the-best-way-to-check-if-a-uialertcontroller-is-already-presenting
