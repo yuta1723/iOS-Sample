@@ -19,23 +19,17 @@
     NSLog(@"viewDidLoad");
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-
-    // テキストを設定
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,20,100,30)];
-    label.text = @"Hello world";
     
-    [self.view addSubview:label];
+    // WebViewの生成
+    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];//大きさ適当
+    _webView.navigationDelegate = self;
+    _webView.UIDelegate = self;
     
-    // ボタンを設定
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = CGRectMake(0,60,100,30);
-    [button setTitle:@"ボタン" forState:UIControlStateNormal];
-    [button setTitle:@"ハイライト" forState:UIControlStateHighlighted];
-    [button setTitle:@"無効" forState:UIControlStateDisabled];
+    // ロード
+    NSString* url = @"https://www.google.com";
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     
-    [button addTarget:self action:@selector(onButtonClicked) forControlEvents:UIControlEventTouchDown];
-    
-    [self.view addSubview:button];
+    [self.view addSubview:_webView];
     
 }
 
@@ -46,69 +40,33 @@
     // Dispose of any resources that can be recreated.
 }
 
-// ボタン押された際のセレクター
-- (void)onButtonClicked {
-    NSLog(@"onButtonClicked");
+//
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    NSLog(@"didStartProvisionalNavigation");
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"title"
-                                                                   message:@"message"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    // UIAlertControllerStyleAlert : 画面中央に表示 (アラート)
-    // UIAlertControllerStyleActionSheet 画面下に表示 (アクションシート)
-    
-    // Cancel用のアクションを生成
-    UIAlertAction * cancelAction =
-    [UIAlertAction actionWithTitle:@"Cancel"
-                             style:UIAlertActionStyleCancel
-                           handler:^(UIAlertAction * action) {
-                               // ボタンタップ時の処理
-                               NSLog(@"Cancel button tapped.");
-                           }];
-    
-    // Destructive用のアクションを生成
-    UIAlertAction * destructiveAction =
-    [UIAlertAction actionWithTitle:@"Destructive"
-                             style:UIAlertActionStyleDestructive
-                           handler:^(UIAlertAction * action) {
-                               // ボタンタップ時の処理
-                               NSLog(@"Destructive button tapped.");
-                           }];
-    
-    // OK用のアクションを生成
-    UIAlertAction * okAction =
-    [UIAlertAction actionWithTitle:@"OK"
-                             style:UIAlertActionStyleDefault
-                           handler:^(UIAlertAction * action) {
-                               // ボタンタップ時の処理
-                               NSLog(@"OK button tapped.");
-                           }];
-    
-    [alert addAction:cancelAction];
-    [alert addAction:destructiveAction];
-    [alert addAction:okAction];
-    
-    if ([self isShowingAlertController:self]) {
-        // まだAlertControllerを表示してないので、returnしない。
-        return;
-    }
-    
-    [self presentViewController:alert animated:YES completion:^{
-        NSLog(@"displayed");
-    }];
-    
-    if ([self isShowingAlertController:self]) {
-        // もう表示しているので、returnする。
-        return;
-    }
-    [self presentViewController:alert animated:YES completion:^{
-        NSLog(@"displayed");
-    }];
 }
 
-- (BOOL)isShowingAlertController :(UIViewController *)viewController{
-    return [self.presentedViewController isKindOfClass:[UIAlertController class]];
-//    return [self.navigationController.visibleViewController isKindOfClass:[UIAlertController class]];
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
+     NSLog(@"didCommitNavigation");
+    
 }
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    NSLog(@"didFinishNavigation");
+    
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    NSLog(@"didFailNavigation");
+    
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    NSLog(@"decidePolicyForNavigationAction");
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+
 
 @end
 // https://stackoverflow.com/questions/28270282/what-is-the-best-way-to-check-if-a-uialertcontroller-is-already-presenting
